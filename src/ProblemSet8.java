@@ -120,27 +120,42 @@ public class ProblemSet8 {
     public String halfway(int[] a) {
         if (a == null || a.length == 0 || a.length % 2 != 0) {
             return null;
-        }
-
-        int leftSum = 0;
-        int rightSum = 0;
-
-        for (int j = 0; j < a.length/2; j++) {
-            leftSum += a[j];
-        }
-
-        for (int k = (a.length/2); k < a.length; k++) {
-            rightSum += a[k];
-        }
-
-        if (leftSum > rightSum) {
-            return "LEFT";
         } else {
-            return "RIGHT";
+            int leftSum = 0;
+            int rightSum = 0;
+
+            for (int j = 0; j < a.length / 2; j++) {
+                leftSum += a[j];
+            }
+
+            for (int k = (a.length / 2); k < a.length; k++) {
+                rightSum += a[k];
+            }
+
+            if (leftSum > rightSum) {
+                return "LEFT";
+            } else {
+                return "RIGHT";
+            }
         }
     }
 
     public int[] sequential(int[] a, int[] b) {
-
+        if (a == null || b == null || (a.length + b.length < 3)) {
+            return null;
+        } else {
+            int[] answer = new int[3];
+            int length = a.length;
+            int remaining = 3-length;
+            for (int k = 0; k < length; k++) {
+                answer[k] = a[k];
+            }
+            if (remaining > 0) {
+                for (int j = 0; j < remaining; j++) {
+                    answer[j+length] = b[j];
+                }
+            }
+            return answer;
+        }
     }
 }
