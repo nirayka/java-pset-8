@@ -81,28 +81,31 @@ public class ProblemSet8 {
     }
 
     public int headHoncho(int[] a) {
-        int count = 0;
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] < 0) {
-                count++;
-            }
-        }
-
-        if (a == null || a.length == 0 || count > 0) {
+        if (a == null || a.length == 0) {
             return -1;
         } else {
-            int largest = 0;
-            for (int k = 0; k < a.length; k++) {
-                if (a[k] > largest) {
-                    largest = a[k];
+            int count = 0;
+            for (int i = 0; i < a.length; i++) {
+                if (a[i] < 0) {
+                    count++;
                 }
             }
-            return largest;
+            if (count > 0) {
+                return -1;
+            } else {
+                int largest = 0;
+                for (int k = 0; k < a.length; k++) {
+                    if (a[k] > largest) {
+                        largest = a[k];
+                    }
+                }
+                return largest;
+            }
         }
     }
 
     public boolean tippingPoint(int[] a, int threshold) {
-        if (a == null || threshold == null) {
+        if (a == null) {
             return false;
         } else {
             int arraySum = 0;
@@ -144,18 +147,23 @@ public class ProblemSet8 {
         if (a == null || b == null || (a.length + b.length < 3)) {
             return null;
         } else {
-            int[] answer = new int[3];
-            int length = a.length;
+            int[] newArray = new int[3];
+            int length;
+            if (a.length > 3) {
+                length = 3;
+            } else {
+                length = a.length;
+            }
             int remaining = 3-length;
             for (int k = 0; k < length; k++) {
-                answer[k] = a[k];
+                newArray[k] = a[k];
             }
             if (remaining > 0) {
                 for (int j = 0; j < remaining; j++) {
-                    answer[j+length] = b[j];
+                    newArray[j + length] = b[j];
                 }
             }
-            return answer;
+            return newArray;
         }
     }
 }
