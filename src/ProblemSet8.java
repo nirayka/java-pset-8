@@ -16,7 +16,10 @@ public class ProblemSet8 {
         if (a == null || b == null || a.length % 2 != 1 || b.length % 2 != 1) {
             return null;
         } else {
-            int[] newArray = {a[a.length/2], b[b.length/2]};
+            int[] newArray = {
+                a[a.length/2],
+                b[b.length/2]
+            };
             return newArray;
         }
     }
@@ -55,7 +58,8 @@ public class ProblemSet8 {
                     a[a.length/2-1],
                     a[a.length/2],
                     b[b.length/2-1],
-                    b[b.length/2]};
+                    b[b.length/2]
+            };
             return newArray;
         }
     }
@@ -75,7 +79,11 @@ public class ProblemSet8 {
         if (a == null || a.length == 0 || a.length % 2 != 1) {
             return null;
         } else {
-            int[] newArray = new int[] {a[0], a[a.length/2], a[a.length-1]};
+            int[] newArray = new int[] {
+                    a[0],
+                    a[a.length/2],
+                    a[a.length-1]
+            };
             return newArray;
         }
     }
@@ -109,8 +117,12 @@ public class ProblemSet8 {
             return false;
         } else {
             int arraySum = 0;
-            for (int i = 0; i < a.length; i++) {
-                arraySum += a[i];
+            if (a.length == 0) {
+                arraySum = 0;
+            } else {
+                for (int i = 0; i < a.length; i++) {
+                    arraySum += a[i];
+                }
             }
             if (arraySum > threshold) {
                 return true;
